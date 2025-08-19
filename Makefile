@@ -6,7 +6,8 @@ AR      = ar rcs
 CFLAGS  = -Wall -Wextra -Werror -no-pie
 
 SRC     = 	ft_strlen.asm \
-			ft_strcpy.asm
+			ft_strcpy.asm \
+			ft_strcmp.asm
 
 # Тестовая программа
 TEST    = main.c

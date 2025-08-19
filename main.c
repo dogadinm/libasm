@@ -24,8 +24,17 @@ static void test_ft_strcpy(void) {
     printf(" src=\"longer string\" -> '%s'\n", ft_strcpy(buf, "longer string"));
 }
 
+static void test_ft_strcmp(void) {
+    printf("\n[ft_strcmp]\n");
+    printf(" cmp('abc','abc') = %d\n", ft_strcmp("abc","abc"));
+    printf(" cmp('abc','abd') = %d\n", ft_strcmp("abc","abd"));
+    printf(" cmp('abd','abc') = %d\n", ft_strcmp("abd","abc"));
+    printf(" cmp('\\xFF','\\x00') (unsigned) = %d\n", ft_strcmp("\xFF", "\x00"));
+}
+
 int main(void) {
     test_ft_strlen();
     test_ft_strcpy();
+    test_ft_strcmp();
     return 0;
 }

@@ -31,7 +31,7 @@ ft_strcpy:
     ret
 
 .error:
-    call    __errno_location
+    call    __errno_location wrt ..plt
     mov     dword [rax], EINVAL
     xor     rax, rax
     ret
