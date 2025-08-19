@@ -1,14 +1,16 @@
 NAME    = libasm.a
-SRC     = ft_strlen.asm
 OBJ     = $(SRC:.asm=.o)
 CC      = gcc
 NASM    = nasm
 AR      = ar rcs
 CFLAGS  = -Wall -Wextra -Werror -no-pie
 
+SRC     = 	ft_strlen.asm \
+			ft_strcpy.asm
+
 # Тестовая программа
 TEST    = main.c
-TEST_BIN = test_strlen
+TEST_BIN = asm_test
 
 all: $(NAME)
 

@@ -16,7 +16,16 @@ static void test_ft_strlen(void) {
     printf(" len(\"42Network\")= %zu\n", ft_strlen(c));
 }
 
+static void test_ft_strcpy(void) {
+    char buf[64];
+
+    printf("\n[ft_strcpy]\n");
+    printf(" src=\"kek\" -> '%s'\n", ft_strcpy(buf, "kek"));
+    printf(" src=\"longer string\" -> '%s'\n", ft_strcpy(buf, "longer string"));
+}
+
 int main(void) {
     test_ft_strlen();
+    test_ft_strcpy();
     return 0;
 }
