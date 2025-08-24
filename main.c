@@ -3,6 +3,7 @@
 #include <errno.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <fcntl.h>
 #include "libasm.h"
 
 static void test_ft_strlen(void) {
@@ -32,9 +33,56 @@ static void test_ft_strcmp(void) {
     printf(" cmp('\\xFF','\\x00') (unsigned) = %d\n", ft_strcmp("\xFF", "\x00"));
 }
 
+static void test_ft_write(void){
+    printf("\n[ft_write / ft_read errno handling]\n");
+
+    ssize_t w = ft_write(1, "hello\\n", 6);
+    printf(" write stdout -> %zd (errno=%d)\n", w, errno);
+
+}
+
+
+static void test_ft_write_read_errno(void) {
+    ssize_t w = ft_write(1, "hello\\n", 6);
+    // Force an error: invalid FD
+    errno = 0;
+    w = ft_write(-1, "oops", 4);
+    printf(" write(-1) -> %zd, errno=%d (%s)\n", w, errno, strerror(errno));
+
+
+    // Force an error for read as well
+    errno = 0;
+    char tmp[8];
+    ssize_t r = ft_read(-1, tmp, sizeof tmp);
+    printf(" read(-1) -> %zd, errno=%d (%s)\n", r, errno, strerror(errno));
+}
+
+int test_ft_read(void){
+    const char* filename = "test.txt";
+    FILE *file = fopen(filename, "r");
+
+    if (file == NULL) {
+        perror("Erro to open file");
+        return 1; 
+    }
+
+    char line[256]; 
+
+    while (fgets(line, sizeof(line), file)) {
+        printf("%s", line);
+    }
+    printf("\n");
+
+    fclose(file);
+    return 0;
+}
+
 int main(void) {
     test_ft_strlen();
     test_ft_strcpy();
     test_ft_strcmp();
+    test_ft_write_read_errno();
+    test_ft_write();
+    test_ft_read();
     return 0;
 }
