@@ -9,9 +9,9 @@ SRC     = 	ft_strlen.asm \
 			ft_strcpy.asm \
 			ft_strcmp.asm \
 			ft_write.asm \
-			ft_read.asm
+			ft_read.asm	\
+			ft_strdup.asm
 
-# Тестовая программа
 TEST    = main.c
 TEST_BIN = asm_test
 
