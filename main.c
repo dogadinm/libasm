@@ -77,6 +77,20 @@ int test_ft_read(void){
     return 0;
 }
 
+void	ft_strdup_test(void)
+{
+	printf("\n--------------ft_strdup---------------\n\n");
+	printf("strdup \t\t [%s]\n", strdup("test1"));
+	printf("ft_strdup \t [%s]\n", ft_strdup("test1"));
+	printf("\n\n");
+	printf("strdup \t\t [%s]\n", strdup("this is a very looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong string to test a function"));
+	printf("ft_strdup \t [%s]\n", ft_strdup("this is a very looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong string to test a function"));
+	printf("\n\n");
+	printf("strdup \t\t [%s]\n", strdup(""));
+	printf("ft_strdup \t [%s]\n", ft_strdup(""));
+}
+
+
 int main(void) {
     test_ft_strlen();
     test_ft_strcpy();
@@ -84,5 +98,6 @@ int main(void) {
     test_ft_write_read_errno();
     test_ft_write();
     test_ft_read();
+    ft_strdup_test();
     return 0;
 }
